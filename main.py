@@ -14,4 +14,4 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
 # PyCharm のヘルプは https://www.jetbrains.com/help/pycharm/ を参照してください
-# programming3 手直し
+# programming3 手直し test

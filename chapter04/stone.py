@@ -13,5 +13,5 @@ birthstones = [
     "ターコイズ"       # 12月
 ]
 
-month = int(input("誕生月は？："))
-print(f'あなたの誕生石は{birthstones[month - 1]}です')
+month = int(input("誕生月は？：")) - 1
+print(f'あなたの誕生石は{birthstones[month]}です')

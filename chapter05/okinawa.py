@@ -9,4 +9,7 @@ okinawa = {
 print(okinawa.keys())
 keys = input(f"選択したのは？ -> ")
 
-print(okinawa[keys])
+if keys in okinawa:
+    print(okinawa[keys])
+else:
+    print("それはないよ")

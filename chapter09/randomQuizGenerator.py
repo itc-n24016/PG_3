@@ -16,7 +16,7 @@ capitals = {
 }
 
 #問題集を作成する数を設定
-issue = input("問題集を作成する数を指定して下さい>>")
+issue = int(input("問題集を作成する数を指定して下さい>>"))
 
 #問題集を作成する
 for quiz_num in range(issue):
@@ -30,9 +30,28 @@ for quiz_num in range(issue):
     prefectures = list(capitals.keys())
     random.shuffle(prefectures)
     #47都道府県をループしてそれぞれ問題を作成する
-    for prefecture in range(len(prefectures)):
+    for question_num in range(len(prefectures)):
         #正答と誤答を抽出する
+        correct_answer = capitals[prefectures[question_num]]
+        wrong_answers = list(capitals.values())
+        del wrong_answers[wrong_answers.index(correct_answer)]
+        wrong_answers =random.sample(wrong_answers, 3)
+        answer_options = wrong_answers + [correct_answer]
+        random.shuffle(answer_options)
 
         #問題文と解答の選択肢を問題ファイルに出力する
+        quiz_file.write(f'{question_num + 1}. ')
+        quiz_file.write(prefectures[question_num])
+        quiz_file.write('の都道府県庁所在地は？\n')
+        for i in range(4):
+            quiz_file.write(f' {"ABCD"[i]}. {answer_options[i]}\n')
+        quiz_file.write('\n')
 
         #答えの選択肢を解答ファイルに出力する
+        answer_key_file.write(f'{question_num + 1}. ')
+        answer_key_file.write(
+            "ABCD"[answer_options.index(correct_answer)]
+        )
+        answer_key_file.write('\n')
+    quiz_file.close()
+    answer_key_file.close()
